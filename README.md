@@ -1,37 +1,60 @@
+# Challenge test: contract_users
+
+## Auther : Walaa atiyh
+
+## databass : elephantsql[postgresql]
+
+
+![image](./static/databass.png)
+
+<br>
+
+## Run the code
+
+1. **Clone the repo**
+2. **create  file `project/.env`
+3. **add every thing in  `project/.env.sample` in `.env` file**
+4. **Create the VE and activate it.**
+   * `python3.10 -m venv .venv `
+   * `source .venv/bin/activate`
+
+5. **install requirements.txt**
+
+    * `pip3 install -r requirements.txt`
+
+6. **work with docker**
+   * `docker-compose up --build`
+   *  if you create anew app (module) run this command in another template
+   * `docker-compose run web python manage.py makemigrations`
+   *  `docker-compose run web python manage.py migrate`
+
+
+8. **run in local**
+   * `python manage.py runserver`
+
+
+9.  **superuser**
+    username :admin
+    password:admin
+
+
+## Getting Started
+
+
+## 1.  Authentication and Permission for models
+<br>
+
+| API end-points             | HTTP Method   | Authentication      | Permission    | Result                                       |
+|----------------------      |-------------  |------------         |------------   |------------------------------------------     |
+| /api/v1/client/list        | GET           | User                | User          | List of clients                           |
+| /api/v1/client/list        | POST          | User                | User          | Create new clients                           |
+| /api/v1/client/{client_pk} | GET           | User                | User          | Retrieve details of a particular client  |
+| /api/v1/client/{client_pk} | PUT           | User-owner          | User-owner    | Update a particular client's info   |
+| /api/v1/client/{client_pk} | DELETE        | User-owner          | User-owner    | DELETE a particular client  |
+
+
+
+
 # api-quick-start
 
 Template Project for starting up CRUD API with Django Rest Framework
-
-## Customization Steps
-
-- DO NOT migrate yet
-- add additional dependencies as needed
-  - Re-export requirements.txt as needed
-- change `things` folder to the app name of your choice
-- Search through entire code base for `Thing`,`Things` and `things` to modify code to use your resource
-  - `project/settings.py`
-  - `project/urls.py`
-  - App's files
-    - `views.py`
-    - `urls.py`
-    - `admin.py`
-    - `serializers.py`
-    - `permissions.py`
-  - "Front" files
-    - if including a customer facing portion of the site then update/recreate:
-      - `urls_front.py`
-      - `views_front.py`
-      - template files
-      - Make sure to update project `urls.py` to add routes to the "front".
-- Update ThingModel with fields you need
-  - Make sure to update other modules that would be affected by Model customizations. E.g. serializers, tests, etc.
-- Rename `project/.env.sample` to `.env` and update as needed
-  - To generate secret key use `python3 -c "import secrets; print(secrets.token_urlsafe())"`
-- Run makemigrations and migrate commands when ready.
-- Run `python manage.py collectstatic`
-  - This repository includes static assets in repository. If you are using a Content Delivery Network then remove `staticfiles` from repository.
-- Optional: Update `api_tester.py`
-
-## Database
-
-**NOTE:** If you are using Postgres instead of SQLite then make sure to install `psycopg2-binary` and include in `requirements.txt`
