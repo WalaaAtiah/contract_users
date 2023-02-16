@@ -17,12 +17,6 @@ class ClientSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({"Contract_Date": "The contract start date must be before the contract end date"})
         return data
 
-    def validate_Name(self, value):
-
-        if Client.objects.filter(Name=value).exists():
-            raise serializers.ValidationError({"Name": "This Name is already in use."})
-        return value
-
-
+    
 
 
